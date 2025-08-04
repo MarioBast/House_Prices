@@ -3,17 +3,58 @@
 ### UIDE
 ### Tratamiendo de datos
  
-#### Resumen
+### Resumen
 El presente trabajo analiza las características de las viviendas de la ciudad de Ames, Iowa, con el objetivo de identificar las razones por las que ciertas zonas presentan menos ventas y proyectar la cantidad de casas que se venderán en el año 2010 en cada vecindario. Se emplearon técnicas de análisis exploratorio, visualización de datos y Machine Learning (Random Forest) para realizar la proyección y detectar las zonas con mayor potencial inmobiliario. Los resultados muestran diferencias significativas entre las zonas comerciales y residenciales, aportando insumos útiles para el sector inmobiliario y la planificación urbana.
  
 ##### Palabras clave: ventas de viviendas, análisis urbano, machine learning, proyección, Ames
  
-#### Introducción
+### Introducción
 La predicción de ventas de viviendas y el análisis de factores que influyen en el éxito comercial de diferentes zonas urbanas es un tema de interés tanto para agentes inmobiliarios como para planificadores urbanos. En este estudio, se utiliza el reconocido dataset de Ames Housing para analizar las características principales que afectan las ventas y proyectar el comportamiento para el año 2010. Además, se emplea Machine Learning como herramienta predictiva y de apoyo al análisis.
- 
+
 ### Metodología
-#### 1. Preparación de datos
-Se utilizó el archivo train.csv del dataset Ames Housing, que contiene información sobre ventas de viviendas en diferentes vecindarios, junto con variables como superficie, precio, calidad, año de construcción y año de venta.
+
+#### Limpieza y Transformación de Datos
+
+A continuación, se resumen los pasos principales realizados para limpiar y transformar los datos del proyecto:
+
+#### 1. Carga y Exploración Inicial
+
+- Se importó el archivo de datos `train.csv` utilizando la librería `pandas`.
+- Se realizó una inspección básica del dataset con funciones como `.head()`, `.info()` y `.describe()` para entender la estructura de los datos y detectar valores faltantes o anómalos.
+
+#### 2. Limpieza de Datos
+
+- **Eliminación de columnas irrelevantes:**  
+  Se eliminaron variables con alta proporción de valores nulos o que no aportaban valor analítico, tales como `PoolQC`, `MiscFeature`, `Alley`, entre otras.
+- **Eliminación de outliers:**  
+  Se identificaron y removieron registros con valores extremos en variables clave como `GrLivArea`, para evitar distorsión en el análisis y en los modelos predictivos.
+- **Manejo de valores nulos:**  
+  - Para variables numéricas, los valores faltantes se reemplazaron por la mediana o media de la columna.
+  - Para variables categóricas, se usó la moda o un valor específico ("None") para los nulos.
+
+#### 3. Transformación de Variables
+
+- **Codificación de variables categóricas:**  
+  - Se aplicó *Label Encoding* para convertir categorías en valores numéricos.
+  - En algunos casos, se utilizó *One-Hot Encoding* para variables con pocas categorías distintas.
+- **Creación de variables derivadas:**  
+  - Se generaron nuevas variables combinando o transformando columnas existentes, como la antigüedad de la vivienda (`YearSold - YearBuilt`) o superficies totales.
+- **Estandarización/Normalización:**  
+  - Se normalizaron algunas variables numéricas para que fueran compatibles con los algoritmos de Machine Learning.
+
+### 4. Selección de Variables
+
+- Se seleccionaron únicamente las variables relevantes para el análisis, descartando aquellas que generaban ruido o duplicidad.
+
+#### 5. División de Datos
+
+- Se separaron los datos en variables predictoras (`X`) y variable objetivo (`y`).
+- En etapas de modelado, se dividieron los datos en conjuntos de entrenamiento y prueba (*train/test split*).
+
+#### 6. Procesos Adicionales
+
+- Se realizó análisis exploratorio para identificar correlaciones y patrones relevantes.
+- Se almacenaron datasets limpios y transformados en archivos auxiliares para su reutilización.
  
 ### 2. Análisis exploratorio y visualización
 Se realizó una comparación entre la zona "C (all)" (comercial) y las zonas residenciales, evaluando métricas como:
