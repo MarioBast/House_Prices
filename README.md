@@ -42,7 +42,7 @@ A continuación, se resumen los pasos principales realizados para limpiar y tran
 - **Estandarización/Normalización:**  
   - Se normalizaron algunas variables numéricas para que fueran compatibles con los algoritmos de Machine Learning.
 
-### 4. Selección de Variables
+#### 4. Selección de Variables
 
 - Se seleccionaron únicamente las variables relevantes para el análisis, descartando aquellas que generaban ruido o duplicidad.
 
